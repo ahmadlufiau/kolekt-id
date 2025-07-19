@@ -25,10 +25,10 @@ const CategoryCustomizer: React.FC = () => {
             onClick={() => setIsOpen(false)}
           />
           
-          {/* Modal */}
-          <div className="absolute right-0 top-12 bg-white rounded-lg shadow-xl border z-50 w-80 p-6">
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="text-lg font-semibold text-gray-900">Quick Access Categories</h3>
+          {/* Dropdown */}
+          <div className="absolute top-full mt-2 bg-white rounded-lg shadow-xl border z-50 w-80 transform -translate-x-1/2 left-1/2">
+            <div className="flex items-center justify-between p-4 border-b">
+              <h3 className="text-lg font-semibold text-gray-900">Access Categories</h3>
               <button
                 onClick={() => setIsOpen(false)}
                 className="p-1 hover:bg-gray-100 rounded"
@@ -37,11 +37,11 @@ const CategoryCustomizer: React.FC = () => {
               </button>
             </div>
             
-            <p className="text-sm text-gray-600 mb-4">
-              Select categories to show on homepage. Others will be in "View All".
+            <p className="text-sm text-gray-600 p-4 pb-2">
+              Select categories to show on homepage. All categories will be in "View All".
             </p>
             
-            <div className="space-y-2 max-h-64 overflow-y-auto">
+            <div className="max-h-64 overflow-y-auto p-4 pt-0">
               {categories.map((category) => (
                 <div
                   key={category.id}
@@ -65,7 +65,7 @@ const CategoryCustomizer: React.FC = () => {
               ))}
             </div>
             
-            <div className="mt-4 pt-4 border-t">
+            <div className="p-4 border-t">
               <button
                 onClick={() => setIsOpen(false)}
                 className="w-full bg-gradient-to-r from-orange-500 to-red-500 text-white py-2 px-4 rounded-lg font-medium hover:from-orange-600 hover:to-red-600 transition-all duration-300"

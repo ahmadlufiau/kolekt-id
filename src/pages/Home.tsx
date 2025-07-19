@@ -12,7 +12,7 @@ import {
   SectionHeaderSkeleton 
 } from '../components/SkeletonLoader';
 import { useCategories } from '../context/CategoryContext';
-import { ChevronRight, Clock, Flame, TrendingUp, Settings } from 'lucide-react';
+import { ChevronRight, Clock, Flame, TrendingUp } from 'lucide-react';
 
 const Home: React.FC = () => {
   const { quickAccessCategories } = useCategories();
