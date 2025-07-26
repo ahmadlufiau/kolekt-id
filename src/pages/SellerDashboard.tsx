@@ -94,7 +94,7 @@ const SellerDashboard: React.FC = () => {
       name: 'Wireless Bluetooth Headphones',
       image: 'https://images.pexels.com/photos/3394650/pexels-photo-3394650.jpeg?auto=compress&cs=tinysrgb&w=150',
       sales: 45,
-      revenue: 4049.55,
+      revenue: 60727500,
       stock: 12,
     },
     {
@@ -299,7 +299,7 @@ const SellerDashboard: React.FC = () => {
                         <p className="text-sm text-gray-600">{product.sales} sales</p>
                       </div>
                       <div className="text-right">
-                        <p className="font-semibold text-gray-900">${product.revenue.toFixed(2)}</p>
+                        <p className="font-semibold text-gray-900">{formatIDR(product.revenue)}</p>
                         <p className="text-xs text-gray-500">{product.stock} in stock</p>
                       </div>
                     </div>

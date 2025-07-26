@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SellerSidebar from '../components/SellerSidebar';
+import { formatIDR } from '../utils/currency';
 
 interface Product {
   id: string;
@@ -42,8 +43,8 @@ const SellerProducts: React.FC = () => {
       id: '1',
       name: 'Wireless Bluetooth Headphones',
       description: 'High-quality wireless headphones with noise cancellation and long battery life.',
-      price: 89.99,
-      originalPrice: 129.99,
+      price: 1349000,
+      originalPrice: 1949000,
       discount: 31,
       category: 'Electronics',
       stock: 12,
@@ -56,7 +57,7 @@ const SellerProducts: React.FC = () => {
       id: '2',
       name: 'Stylish Women\'s Sneakers',
       description: 'Comfortable and fashionable sneakers perfect for everyday wear.',
-      price: 129.99,
+      price: 1034000,
       category: 'Fashion',
       stock: 8,
       sold: 32,
@@ -68,8 +69,8 @@ const SellerProducts: React.FC = () => {
       id: '3',
       name: 'Smart Fitness Watch',
       description: 'Advanced fitness tracking with heart rate monitor and GPS.',
-      price: 199.99,
-      originalPrice: 249.99,
+      price: 2999000,
+      originalPrice: 3749000,
       discount: 20,
       category: 'Electronics',
       stock: 0,
@@ -82,7 +83,7 @@ const SellerProducts: React.FC = () => {
       id: '4',
       name: 'Organic Cotton T-Shirt',
       description: 'Soft and comfortable organic cotton t-shirt in various colors.',
-      price: 29.99,
+      price: 449000,
       category: 'Fashion',
       stock: 25,
       sold: 15,
@@ -248,9 +249,9 @@ const SellerProducts: React.FC = () => {
                 
                 <div className="flex items-center justify-between mb-4">
                   <div>
-                    <span className="font-bold text-gray-900">${product.price}</span>
+                    <span className="font-bold text-gray-900">{formatIDR(product.price)}</span>
                     {product.originalPrice && (
-                      <span className="text-sm text-gray-500 line-through ml-2">${product.originalPrice}</span>
+                      <span className="text-sm text-gray-500 line-through ml-2">{formatIDR(product.originalPrice)}</span>
                     )}
                   </div>
                   <div className="text-sm text-gray-600">
@@ -334,9 +335,9 @@ const SellerProducts: React.FC = () => {
                     <div>
                       <p className="text-sm text-gray-600">Price</p>
                       <div className="flex items-center space-x-2">
-                        <span className="font-bold text-gray-900">${selectedProduct.price}</span>
+                        <span className="font-bold text-gray-900">{formatIDR(selectedProduct.price)}</span>
                         {selectedProduct.originalPrice && (
-                          <span className="text-sm text-gray-500 line-through">${selectedProduct.originalPrice}</span>
+                          <span className="text-sm text-gray-500 line-through">{formatIDR(selectedProduct.originalPrice)}</span>
                         )}
                       </div>
                     </div>

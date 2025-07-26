@@ -75,7 +75,7 @@ const SellerSidebar: React.FC = () => {
             </div>
             <div className="flex justify-between text-sm">
               <span className="text-gray-600">Today's Sales</span>
-              <span className="font-medium text-gray-900">$1,234</span>
+              <span className="font-medium text-gray-900">Rp 100.234.000</span>
             </div>
             <div className="flex justify-between text-sm">
               <span className="text-gray-600">Pending Orders</span>

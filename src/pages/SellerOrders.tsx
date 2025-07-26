@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SellerSidebar from '../components/SellerSidebar';
+import { formatIDR } from '../utils/currency';
 
 interface Order {
   id: string;
@@ -39,59 +40,59 @@ const SellerOrders: React.FC = () => {
   const orders: Order[] = [
     {
       id: 'ORD-001',
-      customerName: 'John Doe',
-      customerEmail: 'john@example.com',
-      customerPhone: '+1 (555) 123-4567',
+      customerName: 'Budi Santoso',
+      customerEmail: 'budi@example.com',
+      customerPhone: '+62 812-3456-7890',
       productName: 'Wireless Bluetooth Headphones',
       productImage: 'https://images.pexels.com/photos/3394650/pexels-photo-3394650.jpeg?auto=compress&cs=tinysrgb&w=150',
       quantity: 1,
-      amount: 89.99,
+      amount: 1349000,
       status: 'shipped',
       date: '2024-01-15T10:30:00Z',
-      address: '123 Main St, New York, NY 10001',
-      paymentMethod: 'Credit Card ****1234',
+      address: 'Jl. Sudirman No. 123, Jakarta Pusat',
+      paymentMethod: 'GoPay',
     },
     {
       id: 'ORD-002',
-      customerName: 'Sarah Wilson',
-      customerEmail: 'sarah@example.com',
-      customerPhone: '+1 (555) 987-6543',
+      customerName: 'Sari Wijaya',
+      customerEmail: 'sari@example.com',
+      customerPhone: '+62 813-9876-5432',
       productName: 'Stylish Women\'s Sneakers',
       productImage: 'https://images.pexels.com/photos/1460691/pexels-photo-1460691.jpeg?auto=compress&cs=tinysrgb&w=150',
       quantity: 1,
-      amount: 129.99,
+      amount: 1034000,
       status: 'confirmed',
       date: '2024-01-15T09:15:00Z',
-      address: '456 Oak Ave, Los Angeles, CA 90210',
-      paymentMethod: 'PayPal',
+      address: 'Jl. Thamrin No. 456, Jakarta Pusat',
+      paymentMethod: 'OVO',
     },
     {
       id: 'ORD-003',
-      customerName: 'Mike Johnson',
-      customerEmail: 'mike@example.com',
-      customerPhone: '+1 (555) 456-7890',
+      customerName: 'Ahmad Rahman',
+      customerEmail: 'ahmad@example.com',
+      customerPhone: '+62 814-5678-9012',
       productName: 'Wireless Bluetooth Headphones',
       productImage: 'https://images.pexels.com/photos/3394650/pexels-photo-3394650.jpeg?auto=compress&cs=tinysrgb&w=150',
       quantity: 2,
-      amount: 179.98,
+      amount: 2698000,
       status: 'delivered',
       date: '2024-01-14T16:45:00Z',
-      address: '789 Pine St, Chicago, IL 60601',
-      paymentMethod: 'Credit Card ****5678',
+      address: 'Jl. Gatot Subroto No. 789, Jakarta Selatan',
+      paymentMethod: 'DANA',
     },
     {
       id: 'ORD-004',
-      customerName: 'Emily Davis',
-      customerEmail: 'emily@example.com',
-      customerPhone: '+1 (555) 321-0987',
+      customerName: 'Dewi Putri',
+      customerEmail: 'dewi@example.com',
+      customerPhone: '+62 815-3210-9876',
       productName: 'Smart Fitness Watch',
       productImage: 'https://images.pexels.com/photos/437037/pexels-photo-437037.jpeg?auto=compress&cs=tinysrgb&w=150',
       quantity: 1,
-      amount: 199.99,
+      amount: 2999000,
       status: 'pending',
       date: '2024-01-14T14:20:00Z',
-      address: '321 Elm St, Miami, FL 33101',
-      paymentMethod: 'Credit Card ****9012',
+      address: 'Jl. Kuningan No. 321, Jakarta Selatan',
+      paymentMethod: 'ShopeePay',
     },
     {
       id: 'ORD-005',
@@ -280,7 +281,7 @@ const SellerOrders: React.FC = () => {
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm font-medium text-gray-900">${order.amount}</div>
+                      <div className="text-sm font-medium text-gray-900">{formatIDR(order.amount)}</div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${getStatusColor(order.status)}`}>
@@ -345,7 +346,7 @@ const SellerOrders: React.FC = () => {
                     </div>
                     <div>
                       <p className="text-sm text-gray-600">Total Amount</p>
-                      <p className="font-medium text-gray-900">${selectedOrder.amount}</p>
+                      <p className="font-medium text-gray-900">{formatIDR(selectedOrder.amount)}</p>
                     </div>
                   </div>
                 </div>
