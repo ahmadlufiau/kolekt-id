@@ -3,6 +3,7 @@ import { Star, Heart, ShoppingCart } from 'lucide-react';
 import { Product } from '../types';
 import { useCart } from '../context/CartContext';
 import { Link } from 'react-router-dom';
+import { formatIDR } from '../utils/currency';
 
 interface ProductCardProps {
   product: Product;
@@ -45,7 +46,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         </div>
         
         <div className="p-4">
-          <h3 className="text-sm font-medium text-gray-900 mb-2 line-clamp-2 group-hover:text-orange-600 transition-colors">
+          <h3 className="text-sm font-medium text-gray-900 mb-2 line-clamp-2 group-hover:text-[#FF6B6B] transition-colors">
             {product.name}
           </h3>
           
@@ -60,9 +61,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center space-x-2">
-              <span className="text-lg font-bold text-orange-600">${product.price}</span>
+              <span className="text-lg font-bold text-[#FF6B6B]">{formatIDR(product.price)}</span>
               {product.originalPrice && (
-                <span className="text-sm text-gray-500 line-through">${product.originalPrice}</span>
+                <span className="text-sm text-gray-500 line-through">{formatIDR(product.originalPrice)}</span>
               )}
             </div>
           </div>

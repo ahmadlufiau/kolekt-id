@@ -3,6 +3,7 @@ import { useLocation, useNavigate, Link } from 'react-router-dom';
 import { CheckCircle, Package, MapPin, CreditCard, ArrowRight } from 'lucide-react';
 import { Order } from '../types';
 import { useCart } from '../context/CartContext';
+import { formatIDR } from '../utils/currency';
 
 const OrderConfirmation: React.FC = () => {
   const location = useLocation();
@@ -76,7 +77,7 @@ const OrderConfirmation: React.FC = () => {
                 </div>
                 <div>
                   <p className="text-sm text-gray-600">Total Amount</p>
-                  <p className="font-semibold text-orange-600 text-lg">${order.total.toFixed(2)}</p>
+                  <p className="font-semibold text-[#FF6B6B] text-lg">{formatIDR(order.total)}</p>
                 </div>
               </div>
 
@@ -97,7 +98,7 @@ const OrderConfirmation: React.FC = () => {
                       </div>
                       <div className="text-right">
                         <p className="font-semibold text-gray-900">
-                          ${(item.product.price * item.quantity).toFixed(2)}
+                          {formatIDR(item.product.price * item.quantity)}
                         </p>
                       </div>
                     </div>
@@ -148,22 +149,22 @@ const OrderConfirmation: React.FC = () => {
               <div className="space-y-3">
                 <div className="flex justify-between">
                   <span className="text-gray-600">Subtotal</span>
-                  <span className="font-medium">${order.subtotal.toFixed(2)}</span>
+                  <span className="font-medium">{formatIDR(order.subtotal)}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600">Shipping</span>
                   <span className="font-medium">
-                    {order.shipping === 0 ? 'Free' : `$${order.shipping.toFixed(2)}`}
+                    {order.shipping === 0 ? 'Free' : formatIDR(order.shipping)}
                   </span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600">Tax</span>
-                  <span className="font-medium">${order.tax.toFixed(2)}</span>
+                  <span className="font-medium">{formatIDR(order.tax)}</span>
                 </div>
                 <div className="border-t pt-3">
                   <div className="flex justify-between">
                     <span className="text-xl font-bold">Total</span>
-                    <span className="text-xl font-bold text-orange-600">${order.total.toFixed(2)}</span>
+                    <span className="text-xl font-bold text-[#FF6B6B]">{formatIDR(order.total)}</span>
                   </div>
                 </div>
               </div>

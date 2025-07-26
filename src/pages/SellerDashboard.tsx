@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SellerSidebar from '../components/SellerSidebar';
+import { formatIDR } from '../utils/currency';
 
 interface DashboardStats {
   totalSales: number;
@@ -44,7 +45,7 @@ const SellerDashboard: React.FC = () => {
 
   // Mock data
   const stats: DashboardStats = {
-    totalSales: 15420.50,
+    totalSales: 231307500, // Rp 231,307,500
     totalOrders: 89,
     totalProducts: 24,
     totalCustomers: 67,
@@ -55,33 +56,33 @@ const SellerDashboard: React.FC = () => {
   const recentOrders: RecentOrder[] = [
     {
       id: 'ORD-001',
-      customerName: 'John Doe',
+      customerName: 'Budi Santoso',
       productName: 'Wireless Bluetooth Headphones',
-      amount: 89.99,
+      amount: 1349000,
       status: 'shipped',
       date: '2024-01-15T10:30:00Z',
     },
     {
       id: 'ORD-002',
-      customerName: 'Sarah Wilson',
+      customerName: 'Sari Wijaya',
       productName: 'Stylish Women\'s Sneakers',
-      amount: 129.99,
+      amount: 1034000,
       status: 'confirmed',
       date: '2024-01-15T09:15:00Z',
     },
     {
       id: 'ORD-003',
-      customerName: 'Mike Johnson',
+      customerName: 'Ahmad Rahman',
       productName: 'Wireless Bluetooth Headphones',
-      amount: 89.99,
+      amount: 1349000,
       status: 'delivered',
       date: '2024-01-14T16:45:00Z',
     },
     {
       id: 'ORD-004',
-      customerName: 'Emily Davis',
+      customerName: 'Dewi Putri',
       productName: 'Smart Fitness Watch',
-      amount: 199.99,
+      amount: 2999000,
       status: 'pending',
       date: '2024-01-14T14:20:00Z',
     },
@@ -177,7 +178,7 @@ const SellerDashboard: React.FC = () => {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-600">Total Sales</p>
-                <p className="text-2xl font-bold text-gray-900">${stats.totalSales.toLocaleString()}</p>
+                <p className="text-2xl font-bold text-gray-900">{formatIDR(stats.totalSales)}</p>
                 <div className="flex items-center mt-2">
                   <TrendingUp className={`h-4 w-4 mr-1 ${stats.salesGrowth >= 0 ? 'text-green-500' : 'text-red-500'}`} />
                   <span className={`text-sm ${stats.salesGrowth >= 0 ? 'text-green-600' : 'text-red-600'}`}>
@@ -266,7 +267,7 @@ const SellerDashboard: React.FC = () => {
                         </div>
                       </div>
                       <div className="text-right">
-                        <p className="font-semibold text-gray-900">${order.amount}</p>
+                        <p className="font-semibold text-gray-900">{formatIDR(order.amount)}</p>
                         <span className={`inline-block px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(order.status)}`}>
                           {order.status.charAt(0).toUpperCase() + order.status.slice(1)}
                         </span>

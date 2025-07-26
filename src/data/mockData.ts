@@ -16,8 +16,8 @@ export const products: Product[] = [
   {
     id: '1',
     name: 'Wireless Bluetooth Headphones',
-    price: 59.99,
-    originalPrice: 79.99,
+    price: 899000,
+    originalPrice: 1199000,
     image: 'https://images.pexels.com/photos/3394650/pexels-photo-3394650.jpeg?auto=compress&cs=tinysrgb&w=400',
     images: [
       'https://images.pexels.com/photos/3394650/pexels-photo-3394650.jpeg?auto=compress&cs=tinysrgb&w=400',
@@ -39,8 +39,8 @@ export const products: Product[] = [
   {
     id: '2',
     name: 'Stylish Women\'s Sneakers',
-    price: 45.99,
-    originalPrice: 65.99,
+    price: 689000,
+    originalPrice: 989000,
     image: 'https://images.pexels.com/photos/1460691/pexels-photo-1460691.jpeg?auto=compress&cs=tinysrgb&w=400',
     images: [
       'https://images.pexels.com/photos/1460691/pexels-photo-1460691.jpeg?auto=compress&cs=tinysrgb&w=400',
@@ -62,8 +62,8 @@ export const products: Product[] = [
   {
     id: '3',
     name: 'Premium Coffee Maker',
-    price: 129.99,
-    originalPrice: 159.99,
+    price: 1949000,
+    originalPrice: 2399000,
     image: 'https://images.pexels.com/photos/324028/pexels-photo-324028.jpeg?auto=compress&cs=tinysrgb&w=400',
     images: [
       'https://images.pexels.com/photos/324028/pexels-photo-324028.jpeg?auto=compress&cs=tinysrgb&w=400',
@@ -85,8 +85,8 @@ export const products: Product[] = [
   {
     id: '4',
     name: 'Organic Skincare Set',
-    price: 89.99,
-    originalPrice: 120.99,
+    price: 1349000,
+    originalPrice: 1814000,
     image: 'https://images.pexels.com/photos/3685175/pexels-photo-3685175.jpeg?auto=compress&cs=tinysrgb&w=400',
     images: [
       'https://images.pexels.com/photos/3685175/pexels-photo-3685175.jpeg?auto=compress&cs=tinysrgb&w=400',
@@ -108,8 +108,8 @@ export const products: Product[] = [
   {
     id: '5',
     name: 'Yoga Mat Premium',
-    price: 29.99,
-    originalPrice: 39.99,
+    price: 449000,
+    originalPrice: 599000,
     image: 'https://images.pexels.com/photos/3822191/pexels-photo-3822191.jpeg?auto=compress&cs=tinysrgb&w=400',
     images: [
       'https://images.pexels.com/photos/3822191/pexels-photo-3822191.jpeg?auto=compress&cs=tinysrgb&w=400',
@@ -131,8 +131,8 @@ export const products: Product[] = [
   {
     id: '6',
     name: 'Smart Watch Series 6',
-    price: 199.99,
-    originalPrice: 249.99,
+    price: 2999000,
+    originalPrice: 3749000,
     image: 'https://images.pexels.com/photos/437037/pexels-photo-437037.jpeg?auto=compress&cs=tinysrgb&w=400',
     images: [
       'https://images.pexels.com/photos/437037/pexels-photo-437037.jpeg?auto=compress&cs=tinysrgb&w=400',
@@ -156,22 +156,22 @@ export const products: Product[] = [
 export const mockAddresses: Address[] = [
   {
     id: '1',
-    name: 'John Doe',
-    phone: '+1 (555) 123-4567',
-    address: '123 Main Street, Apt 4B',
-    city: 'New York',
-    state: 'NY',
-    zipCode: '10001',
+    name: 'Budi Santoso',
+    phone: '+62 812-3456-7890',
+    address: 'Jl. Sudirman No. 123, Gedung Menara Thamrin Lt. 15',
+    city: 'Jakarta Pusat',
+    state: 'DKI Jakarta',
+    zipCode: '10350',
     isDefault: true,
   },
   {
     id: '2',
-    name: 'John Doe',
-    phone: '+1 (555) 123-4567',
-    address: '456 Oak Avenue',
-    city: 'Brooklyn',
-    state: 'NY',
-    zipCode: '11201',
+    name: 'Budi Santoso',
+    phone: '+62 812-3456-7890',
+    address: 'Jl. Gatot Subroto No. 456, Apartemen Senayan City Tower A',
+    city: 'Jakarta Selatan',
+    state: 'DKI Jakarta',
+    zipCode: '12190',
     isDefault: false,
   },
 ];
@@ -179,23 +179,51 @@ export const mockAddresses: Address[] = [
 export const mockPaymentMethods: PaymentMethod[] = [
   {
     id: '1',
-    type: 'card',
-    name: 'Visa ending in 4242',
-    details: '**** **** **** 4242',
+    type: 'ewallet',
+    name: 'GoPay',
+    details: '',
     isDefault: true,
   },
   {
     id: '2',
-    type: 'paypal',
-    name: 'PayPal',
-    details: 'john.doe@email.com',
+    type: 'ewallet',
+    name: 'OVO',
+    details: '',
     isDefault: false,
   },
   {
     id: '3',
-    type: 'card',
-    name: 'Mastercard ending in 8888',
-    details: '**** **** **** 8888',
+    type: 'ewallet',
+    name: 'DANA',
+    details: '',
+    isDefault: false,
+  },
+  {
+    id: '4',
+    type: 'ewallet',
+    name: 'ShopeePay',
+    details: '',
+    isDefault: false,
+  },
+  {
+    id: '5',
+    type: 'transfer',
+    name: 'Bank Transfer - BCA',
+    details: '1234567890',
+    isDefault: false,
+  },
+  {
+    id: '6',
+    type: 'transfer',
+    name: 'Bank Transfer - Mandiri',
+    details: '1234567890',
+    isDefault: false,
+  },
+  {
+    id: '7',
+    type: 'qris',
+    name: 'QRIS',
+    details: 'Scan QR Code to Pay',
     isDefault: false,
   },
 ];

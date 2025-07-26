@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { MapPin, CreditCard, Truck, Shield, ChevronRight, Edit } from 'lucide-react';
+import { MapPin, CreditCard, Truck, Shield, Edit } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { mockAddresses, mockPaymentMethods } from '../data/mockData';
 import { Address, PaymentMethod } from '../types';
+import { formatIDR } from '../utils/currency';
+import PaymentMethodIcon from '../components/PaymentMethodIcon';
 
 const Checkout: React.FC = () => {
   const { state, createOrder } = useCart();
@@ -14,8 +16,8 @@ const Checkout: React.FC = () => {
 
   const selectedItems = state.items.filter(item => item.selected);
   const subtotal = selectedItems.reduce((total, item) => total + (item.product.price * item.quantity), 0);
-  const tax = subtotal * 0.08;
-  const shipping = subtotal > 50 ? 0 : 9.99;
+  const tax = subtotal * 0.11; // Indonesian VAT rate
+  const shipping = subtotal > 750000 ? 0 : 15000; // Free shipping over Rp 750,000
   const total = subtotal + tax + shipping;
 
   const handlePlaceOrder = async () => {
@@ -113,17 +115,13 @@ const Checkout: React.FC = () => {
                     onClick={() => setSelectedPayment(payment)}
                   >
                     <div className="flex items-center justify-between">
-                      <div className="flex items-center space-x-3">
-                        <div className={`w-10 h-6 rounded flex items-center justify-center text-xs font-bold text-white ${
-                          payment.type === 'card' ? 'bg-blue-600' : 'bg-yellow-500'
-                        }`}>
-                          {payment.type === 'card' ? 'CARD' : 'PP'}
-                        </div>
-                        <div>
-                          <p className="font-semibold text-gray-900">{payment.name}</p>
-                          <p className="text-gray-600 text-sm">{payment.details}</p>
-                        </div>
+                                          <div className="flex items-center space-x-3">
+                      <PaymentMethodIcon payment={payment} className="h-6 w-6" />
+                      <div>
+                        <p className="font-semibold text-gray-900">{payment.name}</p>
+                        <p className="text-gray-600 text-sm">{payment.details}</p>
                       </div>
+                    </div>
                       {payment.isDefault && (
                         <span className="bg-orange-100 text-orange-800 text-xs px-2 py-1 rounded-full">
                           Default
@@ -151,7 +149,7 @@ const Checkout: React.FC = () => {
                       <p className="text-sm text-gray-600">Qty: {item.quantity}</p>
                     </div>
                     <div className="text-right">
-                      <p className="font-semibold text-gray-900">${(item.product.price * item.quantity).toFixed(2)}</p>
+                      <p className="font-semibold text-gray-900">{formatIDR(item.product.price * item.quantity)}</p>
                     </div>
                   </div>
                 ))}
@@ -167,20 +165,20 @@ const Checkout: React.FC = () => {
               <div className="space-y-3 mb-6">
                 <div className="flex justify-between">
                   <span className="text-gray-600">Subtotal</span>
-                  <span className="font-medium">${subtotal.toFixed(2)}</span>
+                  <span className="font-medium">{formatIDR(subtotal)}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600">Shipping</span>
-                  <span className="font-medium">{shipping === 0 ? 'Free' : `$${shipping.toFixed(2)}`}</span>
+                  <span className="font-medium">{shipping === 0 ? 'Free' : formatIDR(shipping)}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600">Tax</span>
-                  <span className="font-medium">${tax.toFixed(2)}</span>
+                  <span className="font-medium">{formatIDR(tax)}</span>
                 </div>
                 <div className="border-t pt-3">
                   <div className="flex justify-between">
                     <span className="text-xl font-bold">Total</span>
-                    <span className="text-xl font-bold text-orange-600">${total.toFixed(2)}</span>
+                    <span className="text-xl font-bold text-[#FF6B6B]">{formatIDR(total)}</span>
                   </div>
                 </div>
               </div>

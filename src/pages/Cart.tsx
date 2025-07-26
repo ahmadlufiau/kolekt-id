@@ -2,6 +2,7 @@ import React from 'react';
 import { Minus, Plus, Trash2, ShoppingBag } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { Link, useNavigate } from 'react-router-dom';
+import { formatIDR } from '../utils/currency';
 
 const Cart: React.FC = () => {
   const { state, removeFromCart, updateQuantity, toggleSelect } = useCart();
@@ -62,9 +63,9 @@ const Cart: React.FC = () => {
                     </Link>
                     <p className="text-sm text-gray-500 mt-1">{item.product.category}</p>
                     <div className="flex items-center space-x-4 mt-2">
-                      <span className="text-xl font-bold text-orange-600">${item.product.price}</span>
+                      <span className="text-xl font-bold text-[#FF6B6B]">{formatIDR(item.product.price)}</span>
                       {item.product.originalPrice && (
-                        <span className="text-sm text-gray-500 line-through">${item.product.originalPrice}</span>
+                        <span className="text-sm text-gray-500 line-through">{formatIDR(item.product.originalPrice)}</span>
                       )}
                     </div>
                   </div>
@@ -102,7 +103,7 @@ const Cart: React.FC = () => {
               <div className="space-y-3 mb-4">
                 <div className="flex justify-between">
                   <span className="text-gray-600">Items ({totalItems})</span>
-                  <span className="font-medium">${totalAmount.toFixed(2)}</span>
+                  <span className="font-medium">{formatIDR(totalAmount)}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600">Shipping</span>

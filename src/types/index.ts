@@ -52,7 +52,7 @@ export interface Address {
 
 export interface PaymentMethod {
   id: string;
-  type: 'card' | 'paypal' | 'bank';
+  type: 'card' | 'paypal' | 'bank' | 'ewallet' | 'transfer' | 'qris';
   name: string;
   details: string;
   isDefault: boolean;

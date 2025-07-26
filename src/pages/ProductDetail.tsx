@@ -9,6 +9,7 @@ import ReviewCard from '../components/ReviewCard';
 import ReviewForm from '../components/ReviewForm';
 import ChatButton from '../components/ChatButton';
 import { Review, ReviewFormData } from '../types';
+import { formatIDR } from '../utils/currency';
 
 const ProductDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -138,10 +139,10 @@ const ProductDetail: React.FC = () => {
             </div>
 
             <div className="flex items-center space-x-4">
-              <span className="text-4xl font-bold text-orange-600">${product.price}</span>
-              {product.originalPrice && (
-                <span className="text-xl text-gray-500 line-through">${product.originalPrice}</span>
-              )}
+                              <span className="text-4xl font-bold text-[#FF6B6B]">{formatIDR(product.price)}</span>
+                              {product.originalPrice && (
+                  <span className="text-xl text-gray-500 line-through">{formatIDR(product.originalPrice)}</span>
+                )}
               {product.discount && (
                 <span className="bg-red-500 text-white px-2 py-1 rounded-md text-sm font-bold">
                   -{product.discount}%
