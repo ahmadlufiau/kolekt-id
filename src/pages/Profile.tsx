@@ -103,7 +103,7 @@ const Profile: React.FC = () => {
                   />
                 </div>
               </div>
-              <button className="mt-4 bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-2 rounded-md hover:from-orange-600 hover:to-red-600 transition-all duration-300">
+                              <button className="mt-4 bg-[#FF6B6B] text-white px-6 py-2 rounded-md hover:bg-[#0A2647] transition-all duration-300">
                 Save Changes
               </button>
             </div>

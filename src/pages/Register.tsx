@@ -51,13 +51,13 @@ const Register: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-red-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 relative z-10">
+             <div className="min-h-screen bg-white flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 relative z-10">
       <div className="max-w-md w-full space-y-8">
         {/* Header */}
         <div className="text-center">
-          <Link 
-            to="/" 
-            className="inline-flex items-center text-orange-600 hover:text-orange-700 mb-4 transition-colors"
+                    <Link
+            to="/"
+            className="inline-flex items-center text-[#0A2647] hover:text-[#FF6B6B] mb-4 transition-colors"
           >
             <ArrowLeft className="h-4 w-4 mr-2" />
             Back to Home
@@ -252,7 +252,7 @@ const Register: React.FC = () => {
               <button
                 type="submit"
                 disabled={state.isLoading || !isFormValid()}
-                className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
+                className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-[#FF6B6B] hover:bg-[#0A2647] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#FF6B6B] disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
               >
                 {state.isLoading ? (
                   <div className="flex items-center">
@@ -309,7 +309,7 @@ const Register: React.FC = () => {
               Already have an account?{' '}
               <Link 
                 to="/login" 
-                className="font-medium text-orange-600 hover:text-orange-500 transition-colors"
+                className="font-medium text-[#FF6B6B] hover:text-[#0A2647] transition-colors"
               >
                 Sign in
               </Link>

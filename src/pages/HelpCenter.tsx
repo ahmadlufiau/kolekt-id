@@ -140,7 +140,7 @@ const HelpCenter: React.FC = () => {
               </Link>
               <div className="h-6 w-px bg-gray-300"></div>
               <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg flex items-center justify-center">
+                <div className="w-8 h-8 bg-[#FF6B6B] rounded-lg flex items-center justify-center">
                   <span className="text-white font-bold text-sm">S</span>
                 </div>
                 <span className="text-xl font-bold text-gray-900">Kolekt.id</span>
@@ -155,7 +155,7 @@ const HelpCenter: React.FC = () => {
       </header>
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-orange-500 to-red-500 text-white">
+              <section className="bg-[#0A2647] text-white">
         <div className="container mx-auto px-4 py-16">
           <div className="text-center">
             <h1 className="text-3xl md:text-4xl font-bold mb-8">
@@ -247,7 +247,7 @@ const HelpCenter: React.FC = () => {
                   index !== faqs.length - 1 ? 'border-b border-gray-200' : ''
                 }`}
               >
-                <p className="text-gray-700 hover:text-orange-600 transition-colors">
+                <p className="text-gray-700 hover:text-[#FF6B6B] transition-colors">
                   {faq.question}
                 </p>
               </button>
@@ -267,7 +267,7 @@ const HelpCenter: React.FC = () => {
               </div>
               <h3 className="font-semibold text-gray-900 mb-2">Live Chat</h3>
               <p className="text-gray-600 mb-4">Chat with our support team</p>
-              <button className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-2 rounded-lg font-semibold hover:from-orange-600 hover:to-red-600 transition-all duration-300">
+              <button className="bg-[#FF6B6B] text-white px-6 py-2 rounded-lg font-semibold hover:bg-[#0A2647] transition-all duration-300">
                 Start Chat
               </button>
             </div>
@@ -278,7 +278,7 @@ const HelpCenter: React.FC = () => {
               </div>
               <h3 className="font-semibold text-gray-900 mb-2">Phone Support</h3>
               <p className="text-gray-600 mb-4">Call us for immediate help</p>
-              <button className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-2 rounded-lg font-semibold hover:from-orange-600 hover:to-red-600 transition-all duration-300">
+              <button className="bg-[#FF6B6B] text-white px-6 py-2 rounded-lg font-semibold hover:bg-[#0A2647] transition-all duration-300">
                 Call Now
               </button>
             </div>
@@ -289,7 +289,7 @@ const HelpCenter: React.FC = () => {
               </div>
               <h3 className="font-semibold text-gray-900 mb-2">Email Support</h3>
               <p className="text-gray-600 mb-4">Send us your questions</p>
-              <button className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-2 rounded-lg font-semibold hover:from-orange-600 hover:to-red-600 transition-all duration-300">
+              <button className="bg-[#FF6B6B] text-white px-6 py-2 rounded-lg font-semibold hover:bg-[#0A2647] transition-all duration-300">
                 Send Email
               </button>
             </div>
@@ -302,15 +302,15 @@ const HelpCenter: React.FC = () => {
         <div className="container mx-auto px-4 py-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex space-x-6 mb-4 md:mb-0">
-              <a href="#" className="text-gray-600 hover:text-orange-600 transition-colors">
-                Kolekt.id Policies
-              </a>
-              <a href="#" className="text-gray-600 hover:text-orange-600 transition-colors">
-                Terms of Service
-              </a>
-              <a href="#" className="text-gray-600 hover:text-orange-600 transition-colors">
-                Privacy Policy
-              </a>
+                              <a href="#" className="text-gray-600 hover:text-[#FF6B6B] transition-colors">
+                  Kolekt.id Policies
+                </a>
+                              <a href="#" className="text-gray-600 hover:text-[#FF6B6B] transition-colors">
+                  Terms of Service
+                </a>
+                              <a href="#" className="text-gray-600 hover:text-[#FF6B6B] transition-colors">
+                  Privacy Policy
+                </a>
             </div>
             <div className="flex items-center space-x-4">
               <p className="text-gray-600 text-sm">© 2024 Sea Group. All rights reserved.</p>
@@ -332,7 +332,7 @@ const HelpCenter: React.FC = () => {
       </footer>
 
       {/* AI Chatbot */}
-      <ChatBot helpCategories={categories} faqs={faqs} />
+      <ChatBot />
     </div>
   );
 };

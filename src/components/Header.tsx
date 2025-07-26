@@ -35,24 +35,24 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header className="bg-gradient-to-r from-orange-500 to-red-500 text-white shadow-lg sticky top-0 z-40">
+            <header className="bg-[#0A2647] text-white shadow-lg sticky top-0 z-40">
       <div className="container mx-auto px-4">
         {/* Top bar */}
         <div className="flex items-center justify-between py-2 text-sm">
           <div className="flex items-center space-x-4">
             <span>Follow us on</span>
             <div className="flex space-x-2">
-              <a href="#" className="hover:text-orange-200 transition-colors">Facebook</a>
-              <a href="#" className="hover:text-orange-200 transition-colors">Instagram</a>
+                               <a href="#" className="hover:text-[#FF6B6B] transition-colors">Facebook</a>
+                 <a href="#" className="hover:text-[#FF6B6B] transition-colors">Instagram</a>
             </div>
           </div>
           <div className="flex items-center space-x-4">
             <Bell className="h-4 w-4" />
             <span>Notifications</span>
                              <span>|</span>
-                 <Link to="/help" className="hover:text-orange-200 transition-colors">Help</Link>
+                 <Link to="/help" className="hover:text-[#FF6B6B] transition-colors">Help</Link>
                  <span>|</span>
-                 <Link to="/seller/dashboard" className="hover:text-orange-200 transition-colors">Seller Hub</Link>
+                 <Link to="/seller/dashboard" className="hover:text-[#FF6B6B] transition-colors">Seller Hub</Link>
             <span>|</span>
             <span>English</span>
           </div>
@@ -63,7 +63,7 @@ const Header: React.FC = () => {
           {/* Logo */}
           <Link 
             to="/" 
-            className="text-2xl font-bold text-white hover:text-orange-200 transition-colors"
+            className="text-2xl font-bold text-white hover:text-[#FF6B6B] transition-colors"
           >
             Kolekt.id
           </Link>
@@ -89,17 +89,17 @@ const Header: React.FC = () => {
 
           {/* Navigation icons */}
           <div className="flex items-center space-x-6">
-            <button 
-              className="flex items-center space-x-1 hover:text-orange-200 transition-colors"
-              onClick={() => alert('Wishlist feature coming soon!')}
-            >
+                             <button
+                   className="flex items-center space-x-1 hover:text-[#FF6B6B] transition-colors"
+                   onClick={() => alert('Wishlist feature coming soon!')}
+                 >
               <Heart className="h-5 w-5" />
               <span className="hidden md:inline">Wishlist</span>
             </button>
             
             <Link 
               to="/cart" 
-              className="flex items-center space-x-1 hover:text-orange-200 transition-colors relative"
+              className="flex items-center space-x-1 hover:text-[#FF6B6B] transition-colors relative"
             >
               <ShoppingCart className="h-5 w-5" />
               <span className="hidden md:inline">Cart</span>
@@ -112,10 +112,10 @@ const Header: React.FC = () => {
 
             {authState.isAuthenticated ? (
               <div className="relative" ref={userMenuRef}>
-                <button
-                  onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
-                  className="flex items-center space-x-1 hover:text-orange-200 transition-colors"
-                >
+                                     <button
+                       onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
+                       className="flex items-center space-x-1 hover:text-[#FF6B6B] transition-colors"
+                     >
                   <img
                     src={authState.user?.avatar || 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=150'}
                     alt="Profile"
@@ -149,7 +149,7 @@ const Header: React.FC = () => {
             ) : (
               <Link 
                 to="/login" 
-                className="flex items-center space-x-1 hover:text-orange-200 transition-colors"
+                className="flex items-center space-x-1 hover:text-[#FF6B6B] transition-colors"
               >
                 <User className="h-5 w-5" />
                 <span className="hidden md:inline">Sign In</span>
@@ -171,26 +171,26 @@ const Header: React.FC = () => {
             <div className="flex flex-col space-y-2">
               <Link 
                 to="/" 
-                className="hover:text-orange-200 transition-colors"
+                className="hover:text-[#FF6B6B] transition-colors"
               >
                 Home
               </Link>
               <Link 
                 to="/categories" 
-                className="hover:text-orange-200 transition-colors"
+                className="hover:text-[#FF6B6B] transition-colors"
               >
                 Categories
               </Link>
-              <button 
-                className="hover:text-orange-200 transition-colors text-left"
-                onClick={() => alert('Flash Deals feature coming soon!')}
-              >
+                                 <button
+                     className="hover:text-[#FF6B6B] transition-colors text-left"
+                     onClick={() => alert('Flash Deals feature coming soon!')}
+                   >
                 Flash Deals
               </button>
-              <button 
-                className="hover:text-orange-200 transition-colors text-left"
-                onClick={() => alert('Wishlist feature coming soon!')}
-              >
+                                 <button
+                     className="hover:text-[#FF6B6B] transition-colors text-left"
+                     onClick={() => alert('Wishlist feature coming soon!')}
+                   >
                 Wishlist
               </button>
             </div>

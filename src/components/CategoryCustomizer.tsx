@@ -68,7 +68,7 @@ const CategoryCustomizer: React.FC = () => {
             <div className="p-4 border-t">
               <button
                 onClick={() => setIsOpen(false)}
-                className="w-full bg-gradient-to-r from-orange-500 to-red-500 text-white py-2 px-4 rounded-lg font-medium hover:from-orange-600 hover:to-red-600 transition-all duration-300"
+                className="w-full bg-[#FF6B6B] text-white py-2 px-4 rounded-lg font-medium hover:bg-[#0A2647] transition-all duration-300"
               >
                 Done
               </button>

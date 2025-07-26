@@ -42,7 +42,7 @@ export const ProductCardSkeleton: React.FC = () => {
 
 export const HeroSkeleton: React.FC = () => {
   return (
-    <section className="relative bg-gradient-to-r from-orange-500 to-red-500 text-white overflow-hidden">
+            <section className="relative bg-[#0A2647] text-white overflow-hidden">
       <div className="container mx-auto px-4 py-12">
         <div className="relative bg-white/10 backdrop-blur-sm rounded-2xl p-8 shadow-2xl">
           <div className="grid md:grid-cols-2 gap-8 items-center">

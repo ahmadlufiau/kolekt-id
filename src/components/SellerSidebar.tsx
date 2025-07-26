@@ -29,7 +29,7 @@ const SellerSidebar: React.FC = () => {
     <div className="bg-white shadow-lg w-64 min-h-screen fixed left-0 top-0 z-40">
       <div className="p-6">
         <Link to="/seller/dashboard" className="flex items-center space-x-2">
-          <div className="w-8 h-8 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg flex items-center justify-center">
+          <div className="w-8 h-8 bg-[#FF6B6B] rounded-lg flex items-center justify-center">
             <ShoppingBag className="h-5 w-5 text-white" />
           </div>
           <span className="text-xl font-bold text-gray-900">Seller Hub</span>
@@ -47,13 +47,13 @@ const SellerSidebar: React.FC = () => {
                   to={item.href}
                   className={`group flex items-center px-3 py-2 text-sm font-medium rounded-md transition-colors ${
                     isActive
-                      ? 'bg-orange-50 text-orange-700 border-r-2 border-orange-500'
+                      ? 'bg-[#FF6B6B]/10 text-[#FF6B6B] border-r-2 border-[#FF6B6B]'
                       : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
                   }`}
                 >
                   <item.icon
                     className={`mr-3 h-5 w-5 ${
-                      isActive ? 'text-orange-500' : 'text-gray-400 group-hover:text-gray-500'
+                      isActive ? 'text-[#FF6B6B]' : 'text-gray-400 group-hover:text-gray-500'
                     }`}
                   />
                   {item.name}
@@ -79,7 +79,7 @@ const SellerSidebar: React.FC = () => {
             </div>
             <div className="flex justify-between text-sm">
               <span className="text-gray-600">Pending Orders</span>
-              <span className="font-medium text-orange-600">5</span>
+                               <span className="font-medium text-[#FF6B6B]">5</span>
             </div>
           </div>
         </div>

@@ -161,10 +161,10 @@ const SellerDashboard: React.FC = () => {
               <option value="30d">Last 30 days</option>
               <option value="90d">Last 90 days</option>
             </select>
-            <Link
-              to="/seller/products/add"
-              className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-4 py-2 rounded-lg hover:from-orange-600 hover:to-red-600 transition-all duration-300 flex items-center space-x-2"
-            >
+                         <Link
+               to="/seller/products/add"
+               className="bg-[#FF6B6B] text-white px-4 py-2 rounded-lg hover:bg-[#0A2647] transition-all duration-300 flex items-center space-x-2"
+             >
               <Plus className="h-4 w-4" />
               <span>Add Product</span>
             </Link>
@@ -243,10 +243,10 @@ const SellerDashboard: React.FC = () => {
               <div className="p-6 border-b border-gray-200">
                 <div className="flex items-center justify-between">
                   <h2 className="text-xl font-bold text-gray-900">Recent Orders</h2>
-                  <Link
-                    to="/seller/orders"
-                    className="text-orange-600 hover:text-orange-700 font-medium"
-                  >
+                                     <Link
+                     to="/seller/orders"
+                     className="text-[#FF6B6B] hover:text-[#0A2647] font-medium"
+                   >
                     View All
                   </Link>
                 </div>
@@ -304,10 +304,10 @@ const SellerDashboard: React.FC = () => {
                     </div>
                   ))}
                 </div>
-                <Link
-                  to="/seller/products"
-                  className="block mt-4 text-center text-orange-600 hover:text-orange-700 font-medium"
-                >
+                                 <Link
+                   to="/seller/products"
+                   className="block mt-4 text-center text-[#FF6B6B] hover:text-[#0A2647] font-medium"
+                 >
                   View All Products
                 </Link>
               </div>

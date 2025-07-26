@@ -140,7 +140,7 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ onSubmit, onCancel, isSubmittin
           <button
             type="submit"
             disabled={!isFormValid() || isSubmitting}
-            className="flex-1 bg-gradient-to-r from-orange-500 to-red-500 text-white py-3 px-6 rounded-lg font-semibold hover:from-orange-600 hover:to-red-600 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                            className="flex-1 bg-[#FF6B6B] text-white py-3 px-6 rounded-lg font-semibold hover:bg-[#0A2647] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isSubmitting ? 'Submitting...' : 'Submit Review'}
           </button>

@@ -51,7 +51,7 @@ const Home: React.FC = () => {
                 <span className="text-sm text-gray-500">
                   {quickAccessCategories.length} of 8 shown
                 </span>
-                <Link to="/categories" className="text-orange-600 hover:text-orange-700 font-medium flex items-center">
+                <Link to="/categories" className="text-[#FF6B6B] hover:text-[#0A2647] font-medium flex items-center">
                   View All <ChevronRight className="h-4 w-4 ml-1" />
                 </Link>
               </div>
@@ -85,7 +85,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* Flash Sale Section */}
-      <section className="py-8 bg-gradient-to-r from-red-500 to-orange-500 text-white">
+      <section className="py-8 bg-[#0A2647] text-white">
         <div className="container mx-auto px-4">
           {isLoading ? (
             <div className="mb-6">
@@ -108,7 +108,7 @@ const Home: React.FC = () => {
                   <span className="text-sm font-medium">Ends in 02:45:30</span>
                 </div>
               </div>
-              <Link to="/flash-sale" className="text-white hover:text-orange-200 font-medium flex items-center">
+              <Link to="/flash-sale" className="text-white hover:text-[#FF6B6B] font-medium flex items-center">
                 Shop All <ChevronRight className="h-4 w-4 ml-1" />
               </Link>
             </div>
@@ -138,10 +138,10 @@ const Home: React.FC = () => {
           ) : (
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center space-x-3">
-                <TrendingUp className="h-6 w-6 text-orange-600" />
+                <TrendingUp className="h-6 w-6 text-[#FF6B6B]" />
                 <h2 className="text-2xl font-bold text-gray-900">Trending Now</h2>
               </div>
-              <Link to="/trending" className="text-orange-600 hover:text-orange-700 font-medium flex items-center">
+              <Link to="/trending" className="text-[#FF6B6B] hover:text-[#0A2647] font-medium flex items-center">
                 View All <ChevronRight className="h-4 w-4 ml-1" />
               </Link>
             </div>
@@ -171,7 +171,7 @@ const Home: React.FC = () => {
           ) : (
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-2xl font-bold text-gray-900">New Arrivals</h2>
-              <Link to="/new-arrivals" className="text-orange-600 hover:text-orange-700 font-medium flex items-center">
+              <Link to="/new-arrivals" className="text-[#FF6B6B] hover:text-[#0A2647] font-medium flex items-center">
                 View All <ChevronRight className="h-4 w-4 ml-1" />
               </Link>
             </div>
@@ -198,21 +198,21 @@ const Home: React.FC = () => {
         <section className="py-8 bg-white">
           <div className="container mx-auto px-4">
             <div className="grid md:grid-cols-2 gap-6">
-              <div className="relative bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl p-8 text-white overflow-hidden">
+              <div className="relative bg-[#0A2647] rounded-2xl p-8 text-white overflow-hidden">
                 <div className="relative z-10">
                   <h3 className="text-2xl font-bold mb-2">Free Shipping</h3>
-                  <p className="text-purple-100 mb-4">On orders over $50</p>
-                  <button className="bg-white text-purple-600 px-6 py-2 rounded-lg font-semibold hover:bg-purple-50 transition-colors">
+                  <p className="text-white/80 mb-4">On orders over $50</p>
+                  <button className="bg-[#FF6B6B] text-white px-6 py-2 rounded-lg font-semibold hover:bg-[#0A2647] transition-colors">
                     Shop Now
                   </button>
                 </div>
                 <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
               </div>
-              <div className="relative bg-gradient-to-r from-green-500 to-teal-500 rounded-2xl p-8 text-white overflow-hidden">
+              <div className="relative bg-[#0A2647] rounded-2xl p-8 text-white overflow-hidden">
                 <div className="relative z-10">
                   <h3 className="text-2xl font-bold mb-2">Member Exclusive</h3>
-                  <p className="text-green-100 mb-4">Get extra 15% off</p>
-                  <button className="bg-white text-green-600 px-6 py-2 rounded-lg font-semibold hover:bg-green-50 transition-colors">
+                  <p className="text-white/80 mb-4">Get extra 15% off</p>
+                  <button className="bg-[#FF6B6B] text-white px-6 py-2 rounded-lg font-semibold hover:bg-[#0A2647] transition-colors">
                     Join Now
                   </button>
                 </div>

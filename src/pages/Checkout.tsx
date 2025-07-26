@@ -203,7 +203,7 @@ const Checkout: React.FC = () => {
                 className={`w-full py-3 px-6 rounded-lg font-semibold transition-all duration-300 ${
                   isProcessing
                     ? 'bg-gray-400 text-gray-600 cursor-not-allowed'
-                    : 'bg-gradient-to-r from-orange-500 to-red-500 text-white hover:from-orange-600 hover:to-red-600'
+                    : 'bg-[#FF6B6B] text-white hover:bg-[#0A2647]'
                 }`}
               >
                 {isProcessing ? (

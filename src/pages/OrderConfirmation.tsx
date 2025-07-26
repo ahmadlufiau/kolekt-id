@@ -207,7 +207,7 @@ const OrderConfirmation: React.FC = () => {
             <div className="space-y-3">
               <Link
                 to={`/order-tracking/${order.id}`}
-                className="w-full bg-gradient-to-r from-orange-500 to-red-500 text-white py-3 px-6 rounded-lg font-semibold hover:from-orange-600 hover:to-red-600 transition-all duration-300 flex items-center justify-center space-x-2"
+                className="w-full bg-[#FF6B6B] text-white py-3 px-6 rounded-lg font-semibold hover:bg-[#0A2647] transition-all duration-300 flex items-center justify-center space-x-2"
               >
                 <Package className="h-5 w-5" />
                 <span>Track Order</span>

@@ -160,7 +160,7 @@ const SellerProducts: React.FC = () => {
           </div>
           <Link
             to="/seller/products/add"
-            className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-4 py-2 rounded-lg hover:from-orange-600 hover:to-red-600 transition-all duration-300 flex items-center space-x-2"
+                            className="bg-[#FF6B6B] text-white px-4 py-2 rounded-lg hover:bg-[#0A2647] transition-all duration-300 flex items-center space-x-2"
           >
             <Plus className="h-4 w-4" />
             <span>Add Product</span>

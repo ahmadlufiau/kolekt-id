@@ -135,7 +135,7 @@ const ChatBot: React.FC = () => {
       {/* Floating Chat Button */}
       <button
         onClick={() => setIsOpen(true)}
-        className={`fixed bottom-6 right-6 w-14 h-14 bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center z-50 ${
+                        className={`fixed bottom-6 right-6 w-14 h-14 bg-[#FF6B6B] text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center z-50 ${
           isOpen ? 'scale-0' : 'scale-100'
         }`}
       >
@@ -146,14 +146,14 @@ const ChatBot: React.FC = () => {
       {isOpen && (
         <div className="fixed bottom-6 right-6 w-96 h-[500px] bg-white rounded-lg shadow-2xl border z-50 flex flex-col">
           {/* Chat Header */}
-          <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white p-4 rounded-t-lg flex items-center justify-between">
+                          <div className="bg-[#FF6B6B] text-white p-4 rounded-t-lg flex items-center justify-between">
             <div className="flex items-center space-x-3">
               <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
                 <Bot className="h-5 w-5" />
               </div>
               <div>
                 <h3 className="font-semibold">Kolekt.id Assistant</h3>
-                <p className="text-xs text-orange-100">Online • Typically replies instantly</p>
+                                  <p className="text-xs text-[#FF6B6B]/80">Online • Typically replies instantly</p>
               </div>
             </div>
             <button
@@ -175,10 +175,10 @@ const ChatBot: React.FC = () => {
                   message.isBot ? 'flex-row' : 'flex-row-reverse space-x-reverse'
                 }`}>
                   <div className={`w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 ${
-                    message.isBot ? 'bg-orange-100' : 'bg-blue-100'
+                    message.isBot ? 'bg-[#FF6B6B]/20' : 'bg-blue-100'
                   }`}>
                     {message.isBot ? (
-                      <Bot className="h-4 w-4 text-orange-600" />
+                      <Bot className="h-4 w-4 text-[#FF6B6B]" />
                     ) : (
                       <User className="h-4 w-4 text-blue-600" />
                     )}
@@ -186,11 +186,11 @@ const ChatBot: React.FC = () => {
                   <div className={`p-3 rounded-lg ${
                     message.isBot 
                       ? 'bg-gray-100 text-gray-800' 
-                      : 'bg-gradient-to-r from-orange-500 to-red-500 text-white'
+                      : 'bg-[#FF6B6B] text-white'
                   }`}>
                     <p className="text-sm whitespace-pre-line">{message.text}</p>
                     <p className={`text-xs mt-1 ${
-                      message.isBot ? 'text-gray-500' : 'text-orange-100'
+                      message.isBot ? 'text-gray-500' : 'text-[#FF6B6B]/80'
                     }`}>
                       {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                     </p>
@@ -203,8 +203,8 @@ const ChatBot: React.FC = () => {
             {isTyping && (
               <div className="flex justify-start">
                 <div className="flex items-start space-x-2">
-                  <div className="w-6 h-6 bg-orange-100 rounded-full flex items-center justify-center">
-                    <Bot className="h-4 w-4 text-orange-600" />
+                  <div className="w-6 h-6 bg-[#FF6B6B]/20 rounded-full flex items-center justify-center">
+                    <Bot className="h-4 w-4 text-[#FF6B6B]" />
                   </div>
                   <div className="bg-gray-100 p-3 rounded-lg">
                     <div className="flex space-x-1">
@@ -226,7 +226,7 @@ const ChatBot: React.FC = () => {
                     <button
                       key={index}
                       onClick={() => handleQuickQuestion(question)}
-                      className="text-xs bg-orange-50 text-orange-600 px-3 py-1 rounded-full hover:bg-orange-100 transition-colors"
+                      className="text-xs bg-[#FF6B6B]/10 text-[#FF6B6B] px-3 py-1 rounded-full hover:bg-[#FF6B6B]/20 transition-colors"
                     >
                       {question}
                     </button>
@@ -247,12 +247,12 @@ const ChatBot: React.FC = () => {
                 onChange={(e) => setInputText(e.target.value)}
                 onKeyPress={handleKeyPress}
                 placeholder="Type your message..."
-                className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 text-sm"
+                className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#FF6B6B] text-sm"
               />
               <button
                 onClick={handleSendMessage}
                 disabled={!inputText.trim() || isTyping}
-                className="bg-gradient-to-r from-orange-500 to-red-500 text-white p-2 rounded-lg hover:from-orange-600 hover:to-red-600 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="bg-[#FF6B6B] text-white p-2 rounded-lg hover:bg-[#0A2647] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <Send className="h-4 w-4" />
               </button>

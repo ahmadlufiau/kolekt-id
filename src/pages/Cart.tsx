@@ -20,7 +20,7 @@ const Cart: React.FC = () => {
           <p className="text-gray-600 mb-6">Looks like you haven't added any items to your cart yet.</p>
           <Link
             to="/"
-            className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-3 rounded-lg font-semibold hover:from-orange-600 hover:to-red-600 transition-all duration-300"
+                            className="bg-[#FF6B6B] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#0A2647] transition-all duration-300"
           >
             Start Shopping
           </Link>
@@ -126,7 +126,7 @@ const Cart: React.FC = () => {
                 disabled={selectedItems.length === 0}
                 className={`w-full py-3 px-6 rounded-lg font-semibold transition-all duration-300 ${
                   selectedItems.length > 0
-                    ? 'bg-gradient-to-r from-orange-500 to-red-500 text-white hover:from-orange-600 hover:to-red-600'
+                    ? 'bg-[#FF6B6B] text-white hover:bg-[#0A2647]'
                     : 'bg-gray-300 text-gray-500 cursor-not-allowed'
                 }`}
                 onClick={() => {

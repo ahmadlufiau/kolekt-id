@@ -131,7 +131,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
     return (
       <div className="fixed bottom-4 right-4 z-30">
         <div className="bg-white rounded-lg shadow-lg border border-gray-200 w-80">
-          <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white p-4 rounded-t-lg">
+          <div className="bg-[#FF6B6B] text-white p-4 rounded-t-lg">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-3">
                 <img src={sellerAvatar} alt={sellerName} className="w-8 h-8 rounded-full" />
@@ -151,7 +151,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
             <p className="text-gray-600 mb-4">Please login to start chatting with the seller</p>
             <button
               onClick={() => window.location.href = '/login'}
-              className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-2 rounded-lg hover:from-orange-600 hover:to-red-600 transition-all duration-300"
+              className="bg-[#FF6B6B] text-white px-6 py-2 rounded-lg hover:bg-[#0A2647] transition-all duration-300"
             >
               Login Now
             </button>
@@ -165,7 +165,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
     <div className="fixed bottom-4 right-4 z-30">
       <div className="bg-white rounded-lg shadow-lg border border-gray-200 w-80">
         {/* Header */}
-        <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white p-4 rounded-t-lg">
+        <div className="bg-[#FF6B6B] text-white p-4 rounded-t-lg">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
               <img src={sellerAvatar} alt={sellerName} className="w-8 h-8 rounded-full" />
@@ -206,13 +206,13 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
                     <div
                       className={`px-3 py-2 rounded-lg ${
                         msg.senderType === 'customer'
-                          ? 'bg-orange-500 text-white'
+                          ? 'bg-[#FF6B6B] text-white'
                           : 'bg-gray-100 text-gray-900'
                       }`}
                     >
                       <p className="text-sm">{msg.message}</p>
                       <p className={`text-xs mt-1 ${
-                        msg.senderType === 'customer' ? 'text-orange-100' : 'text-gray-500'
+                        msg.senderType === 'customer' ? 'text-[#FF6B6B]/80' : 'text-gray-500'
                       }`}>
                         {formatTime(msg.timestamp)}
                       </p>

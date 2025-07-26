@@ -177,7 +177,7 @@ const ProductDetail: React.FC = () => {
             <div className="flex space-x-4">
               <button
                 onClick={handleAddToCart}
-                className="flex-1 bg-gradient-to-r from-orange-500 to-red-500 text-white py-3 px-6 rounded-lg font-semibold hover:from-orange-600 hover:to-red-600 transition-all duration-300 flex items-center justify-center space-x-2"
+                className="flex-1 bg-[#FF6B6B] text-white py-3 px-6 rounded-lg font-semibold hover:bg-[#0A2647] transition-all duration-300 flex items-center justify-center space-x-2"
               >
                 <ShoppingCart className="h-5 w-5" />
                 <span>Add to Cart</span>
@@ -262,7 +262,7 @@ const ProductDetail: React.FC = () => {
             {authState.isAuthenticated && (
               <button
                 onClick={() => setShowReviewForm(true)}
-                className="flex items-center space-x-2 bg-gradient-to-r from-orange-500 to-red-500 text-white px-4 py-2 rounded-lg hover:from-orange-600 hover:to-red-600 transition-all duration-300"
+                className="flex items-center space-x-2 bg-[#FF6B6B] text-white px-4 py-2 rounded-lg hover:bg-[#0A2647] transition-all duration-300"
               >
                 <PlusIcon className="h-4 w-4" />
                 <span>Write Review</span>
@@ -352,7 +352,7 @@ const ProductDetail: React.FC = () => {
                 {authState.isAuthenticated ? (
                   <button
                     onClick={() => setShowReviewForm(true)}
-                    className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-2 rounded-lg hover:from-orange-600 hover:to-red-600 transition-all duration-300"
+                    className="bg-[#FF6B6B] text-white px-6 py-2 rounded-lg hover:bg-[#0A2647] transition-all duration-300"
                   >
                     Write First Review
                   </button>
