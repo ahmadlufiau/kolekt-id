@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
-import { CheckCircle, Package, Truck, MapPin, CreditCard, Calendar, ArrowRight } from 'lucide-react';
+import { CheckCircle, Package, MapPin, CreditCard, ArrowRight } from 'lucide-react';
 import { Order } from '../types';
 import { useCart } from '../context/CartContext';
 
@@ -10,15 +10,19 @@ const OrderConfirmation: React.FC = () => {
   const { clearCart } = useCart();
   const order = location.state?.order as Order;
 
+  const handleNavigateHome = useCallback(() => {
+    navigate('/');
+  }, [navigate]);
+
   useEffect(() => {
     if (!order) {
-      navigate('/');
+      handleNavigateHome();
       return;
     }
     
     // Clear cart after successful order
     clearCart();
-  }, [order, navigate, clearCart]);
+  }, [order, handleNavigateHome, clearCart]);
 
   if (!order) {
     return null;

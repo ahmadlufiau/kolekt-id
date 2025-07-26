@@ -1,15 +1,24 @@
 import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Star, Heart, Share2, ShoppingCart, Minus, Plus, Shield, Truck, RotateCcw } from 'lucide-react';
-import { products } from '../data/mockData';
+import { Star, Heart, Share2, ShoppingCart, Minus, Plus, Shield, Truck, RotateCcw, MessageSquare, Plus as PlusIcon } from 'lucide-react';
+import { products, mockReviews } from '../data/mockData';
 import { useCart } from '../context/CartContext';
+import { useAuth } from '../context/AuthContext';
 import ProductCard from '../components/ProductCard';
+import ReviewCard from '../components/ReviewCard';
+import ReviewForm from '../components/ReviewForm';
+import ChatButton from '../components/ChatButton';
+import { Review, ReviewFormData } from '../types';
 
 const ProductDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const { addToCart } = useCart();
+  const { state: authState } = useAuth();
   const [quantity, setQuantity] = useState(1);
   const [selectedImage, setSelectedImage] = useState(0);
+  const [showReviewForm, setShowReviewForm] = useState(false);
+  const [isSubmittingReview, setIsSubmittingReview] = useState(false);
+  const [reviews, setReviews] = useState<Review[]>(mockReviews.filter(r => r.productId === id));
 
   const product = products.find(p => p.id === id);
 
@@ -32,6 +41,36 @@ const ProductDetail: React.FC = () => {
     for (let i = 0; i < quantity; i++) {
       addToCart(product);
     }
+  };
+
+  const handleSubmitReview = async (reviewData: ReviewFormData) => {
+    if (!authState.isAuthenticated || !authState.user) {
+      alert('Please login to submit a review');
+      return;
+    }
+
+    setIsSubmittingReview(true);
+    
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    
+    const newReview: Review = {
+      id: `review-${Date.now()}`,
+      productId: id!,
+      userId: authState.user.id,
+      userName: authState.user.name,
+      userAvatar: authState.user.avatar,
+      rating: reviewData.rating,
+      title: reviewData.title,
+      comment: reviewData.comment,
+      createdAt: new Date().toISOString(),
+      helpful: 0,
+      images: reviewData.images,
+    };
+
+    setReviews(prev => [newReview, ...prev]);
+    setShowReviewForm(false);
+    setIsSubmittingReview(false);
   };
 
   return (
@@ -91,7 +130,7 @@ const ProductDetail: React.FC = () => {
                       />
                     ))}
                   </div>
-                  <span className="ml-2 text-sm text-gray-600">({product.reviews} reviews)</span>
+                  <span className="ml-2 text-sm text-gray-600">({reviews.length} reviews)</span>
                 </div>
                 <span className="text-gray-300">|</span>
                 <span className="text-sm text-gray-600">{product.sold} sold</span>
@@ -151,6 +190,16 @@ const ProductDetail: React.FC = () => {
               </button>
             </div>
 
+            {/* Chat Button */}
+            <div className="mt-4">
+              <ChatButton
+                sellerName={product.seller.name}
+                sellerAvatar="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=150"
+                sellerId="seller-1"
+                productId={product.id}
+              />
+            </div>
+
             {/* Features */}
             <div className="grid grid-cols-3 gap-4 pt-6 border-t">
               <div className="flex items-center space-x-2">
@@ -170,7 +219,7 @@ const ProductDetail: React.FC = () => {
             {/* Seller Info */}
             <div className="bg-gray-50 p-4 rounded-lg">
               <h3 className="font-semibold mb-2">Seller Information</h3>
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between mb-3">
                 <div>
                   <p className="font-medium">{product.seller.name}</p>
                   <div className="flex items-center space-x-2 text-sm text-gray-600">
@@ -184,7 +233,134 @@ const ProductDetail: React.FC = () => {
                   Follow
                 </button>
               </div>
+              <div className="flex items-center justify-between pt-3 border-t border-gray-200">
+                <div className="flex items-center space-x-2 text-sm text-gray-600">
+                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                  <span>Online now</span>
+                </div>
+                <ChatButton
+                  sellerName={product.seller.name}
+                  sellerAvatar="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=150"
+                  sellerId="seller-1"
+                  productId={product.id}
+                />
+              </div>
             </div>
+          </div>
+        </div>
+
+        {/* Reviews Section */}
+        <div className="mt-12">
+          <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center space-x-4">
+              <h2 className="text-2xl font-bold text-gray-900">Customer Reviews</h2>
+              <div className="flex items-center space-x-2">
+                <MessageSquare className="h-5 w-5 text-gray-500" />
+                <span className="text-gray-600">({reviews.length} reviews)</span>
+              </div>
+            </div>
+            {authState.isAuthenticated && (
+              <button
+                onClick={() => setShowReviewForm(true)}
+                className="flex items-center space-x-2 bg-gradient-to-r from-orange-500 to-red-500 text-white px-4 py-2 rounded-lg hover:from-orange-600 hover:to-red-600 transition-all duration-300"
+              >
+                <PlusIcon className="h-4 w-4" />
+                <span>Write Review</span>
+              </button>
+            )}
+          </div>
+
+          {/* Review Form Modal */}
+          {showReviewForm && (
+            <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+              <div className="w-full max-w-2xl">
+                <ReviewForm
+                  onSubmit={handleSubmitReview}
+                  onCancel={() => setShowReviewForm(false)}
+                  isSubmitting={isSubmittingReview}
+                />
+              </div>
+            </div>
+          )}
+
+          {/* Review Summary */}
+          {reviews.length > 0 && (
+            <div className="bg-white rounded-lg border border-gray-200 p-6 mb-6">
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">Review Summary</h3>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <div className="flex items-center space-x-4 mb-4">
+                    <div className="text-center">
+                      <div className="text-3xl font-bold text-gray-900">
+                        {(reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length).toFixed(1)}
+                      </div>
+                      <div className="flex justify-center mt-1">
+                        {[...Array(5)].map((_, i) => (
+                          <Star
+                            key={i}
+                            className={`h-4 w-4 ${
+                              i < Math.floor(reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length)
+                                ? 'text-yellow-400 fill-current'
+                                : 'text-gray-300'
+                            }`}
+                          />
+                        ))}
+                      </div>
+                      <div className="text-sm text-gray-600 mt-1">out of 5</div>
+                    </div>
+                    <div className="flex-1">
+                      <div className="space-y-2">
+                        {[5, 4, 3, 2, 1].map((rating) => {
+                          const count = reviews.filter(r => r.rating === rating).length;
+                          const percentage = (count / reviews.length) * 100;
+                          return (
+                            <div key={rating} className="flex items-center space-x-2">
+                              <span className="text-sm text-gray-600 w-4">{rating}</span>
+                              <div className="flex-1 bg-gray-200 rounded-full h-2">
+                                <div
+                                  className="bg-yellow-400 h-2 rounded-full"
+                                  style={{ width: `${percentage}%` }}
+                                />
+                              </div>
+                              <span className="text-sm text-gray-600 w-8">{count}</span>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="text-sm text-gray-600">
+                  <p>Based on {reviews.length} customer reviews</p>
+                  <p className="mt-2">Share your experience with this product to help other customers make informed decisions.</p>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Reviews List */}
+          <div className="space-y-6">
+            {reviews.length > 0 ? (
+              reviews.map((review) => (
+                <ReviewCard key={review.id} review={review} />
+              ))
+            ) : (
+              <div className="text-center py-12 bg-white rounded-lg border border-gray-200">
+                <MessageSquare className="h-12 w-12 text-gray-400 mx-auto mb-4" />
+                <h3 className="text-lg font-medium text-gray-900 mb-2">No reviews yet</h3>
+                <p className="text-gray-600 mb-4">Be the first to review this product!</p>
+                {authState.isAuthenticated ? (
+                  <button
+                    onClick={() => setShowReviewForm(true)}
+                    className="bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-2 rounded-lg hover:from-orange-600 hover:to-red-600 transition-all duration-300"
+                  >
+                    Write First Review
+                  </button>
+                ) : (
+                  <p className="text-sm text-gray-500">Please login to write a review</p>
+                )}
+              </div>
+            )}
           </div>
         </div>
 
@@ -197,6 +373,17 @@ const ProductDetail: React.FC = () => {
             ))}
           </div>
         </div>
+      </div>
+
+      {/* Floating Chat Button */}
+      <div className="fixed bottom-4 left-4 z-20">
+        <ChatButton
+          sellerName={product.seller.name}
+          sellerAvatar="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=150"
+          sellerId="seller-1"
+          productId={product.id}
+          variant="floating"
+        />
       </div>
     </div>
   );

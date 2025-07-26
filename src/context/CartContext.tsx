@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useReducer, ReactNode } from 'react';
+import React, { createContext, useContext, useReducer, ReactNode, useCallback } from 'react';
 import { CartItem, Product, Order, Address, PaymentMethod } from '../types';
 
 interface CartState {
@@ -96,27 +96,27 @@ const calculateTotal = (items: CartItem[]): number => {
 export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [state, dispatch] = useReducer(cartReducer, { items: [], total: 0 });
 
-  const addToCart = (product: Product) => {
+  const addToCart = useCallback((product: Product) => {
     dispatch({ type: 'ADD_TO_CART', product });
-  };
+  }, []);
 
-  const removeFromCart = (productId: string) => {
+  const removeFromCart = useCallback((productId: string) => {
     dispatch({ type: 'REMOVE_FROM_CART', productId });
-  };
+  }, []);
 
-  const updateQuantity = (productId: string, quantity: number) => {
+  const updateQuantity = useCallback((productId: string, quantity: number) => {
     dispatch({ type: 'UPDATE_QUANTITY', productId, quantity });
-  };
+  }, []);
 
-  const toggleSelect = (productId: string) => {
+  const toggleSelect = useCallback((productId: string) => {
     dispatch({ type: 'TOGGLE_SELECT', productId });
-  };
+  }, []);
 
-  const clearCart = () => {
+  const clearCart = useCallback(() => {
     dispatch({ type: 'CLEAR_CART' });
-  };
+  }, []);
 
-  const createOrder = (address: Address, paymentMethod: PaymentMethod): Order => {
+  const createOrder = useCallback((address: Address, paymentMethod: PaymentMethod): Order => {
     const selectedItems = state.items.filter(item => item.selected);
     const subtotal = selectedItems.reduce((total, item) => total + (item.product.price * item.quantity), 0);
     const tax = subtotal * 0.08;
@@ -138,7 +138,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     };
 
     return order;
-  };
+  }, [state.items]);
 
   return (
     <CartContext.Provider value={{

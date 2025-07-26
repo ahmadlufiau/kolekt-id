@@ -1,7 +1,11 @@
 import React from 'react';
 import { User, Package, Heart, Settings, Bell, MapPin, CreditCard } from 'lucide-react';
+import { useAuth } from '../context/AuthContext';
 
 const Profile: React.FC = () => {
+  const { state } = useAuth();
+  const user = state.user;
+
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="container mx-auto px-4 py-8">
@@ -10,12 +14,16 @@ const Profile: React.FC = () => {
           <div className="lg:col-span-1">
             <div className="bg-white rounded-lg shadow-md p-6">
               <div className="flex items-center space-x-4 mb-6">
-                <div className="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center">
-                  <User className="h-8 w-8 text-white" />
+                <div className="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center overflow-hidden">
+                  {user?.avatar ? (
+                    <img src={user.avatar} alt={user.name} className="w-full h-full object-cover" />
+                  ) : (
+                    <User className="h-8 w-8 text-white" />
+                  )}
                 </div>
                 <div>
-                  <h2 className="text-xl font-bold text-gray-900">John Doe</h2>
-                  <p className="text-gray-600">john.doe@email.com</p>
+                  <h2 className="text-xl font-bold text-gray-900">{user?.name || 'User'}</h2>
+                  <p className="text-gray-600">{user?.email || 'user@email.com'}</p>
                 </div>
               </div>
               
@@ -59,35 +67,39 @@ const Profile: React.FC = () => {
               <h3 className="text-xl font-bold text-gray-900 mb-4">Profile Information</h3>
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">First Name</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
                   <input
                     type="text"
-                    value="John"
+                    value={user?.name || ''}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Last Name</label>
-                  <input
-                    type="text"
-                    value="Doe"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+                    readOnly
                   />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
                   <input
                     type="email"
-                    value="john.doe@email.com"
+                    value={user?.email || ''}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+                    readOnly
                   />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Phone</label>
                   <input
                     type="tel"
-                    value="+1 (555) 123-4567"
+                    value={user?.phone || ''}
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+                    readOnly
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Member Since</label>
+                  <input
+                    type="text"
+                    value="2024"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+                    readOnly
                   />
                 </div>
               </div>

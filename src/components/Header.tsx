@@ -1,15 +1,32 @@
-import React, { useState } from 'react';
-import { Search, ShoppingCart, Menu, User, Heart, Bell } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Search, ShoppingCart, Menu, User, Heart, Bell, LogOut } from 'lucide-react';
 import { useCart } from '../context/CartContext';
-import { Link, useLocation } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
+import { Link } from 'react-router-dom';
 
 const Header: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { state } = useCart();
-  const location = useLocation();
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+  const { state: cartState } = useCart();
+  const { state: authState, logout } = useAuth();
+  const userMenuRef = useRef<HTMLDivElement>(null);
 
-  const cartItemCount = state.items.reduce((total, item) => total + item.quantity, 0);
+  const cartItemCount = cartState.items.reduce((total, item) => total + item.quantity, 0);
+
+  // Close user menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (userMenuRef.current && !userMenuRef.current.contains(event.target as Node)) {
+        setIsUserMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -18,7 +35,7 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header className="bg-gradient-to-r from-orange-500 to-red-500 text-white shadow-lg sticky top-0 z-50">
+    <header className="bg-gradient-to-r from-orange-500 to-red-500 text-white shadow-lg sticky top-0 z-40">
       <div className="container mx-auto px-4">
         {/* Top bar */}
         <div className="flex items-center justify-between py-2 text-sm">
@@ -42,7 +59,10 @@ const Header: React.FC = () => {
         {/* Main header */}
         <div className="flex items-center justify-between py-4">
           {/* Logo */}
-          <Link to="/" className="text-2xl font-bold text-white hover:text-orange-200 transition-colors">
+          <Link 
+            to="/" 
+            className="text-2xl font-bold text-white hover:text-orange-200 transition-colors"
+          >
             Shopee
           </Link>
 
@@ -67,12 +87,18 @@ const Header: React.FC = () => {
 
           {/* Navigation icons */}
           <div className="flex items-center space-x-6">
-            <Link to="/wishlist" className="flex items-center space-x-1 hover:text-orange-200 transition-colors">
+            <button 
+              className="flex items-center space-x-1 hover:text-orange-200 transition-colors"
+              onClick={() => alert('Wishlist feature coming soon!')}
+            >
               <Heart className="h-5 w-5" />
               <span className="hidden md:inline">Wishlist</span>
-            </Link>
+            </button>
             
-            <Link to="/cart" className="flex items-center space-x-1 hover:text-orange-200 transition-colors relative">
+            <Link 
+              to="/cart" 
+              className="flex items-center space-x-1 hover:text-orange-200 transition-colors relative"
+            >
               <ShoppingCart className="h-5 w-5" />
               <span className="hidden md:inline">Cart</span>
               {cartItemCount > 0 && (
@@ -82,10 +108,51 @@ const Header: React.FC = () => {
               )}
             </Link>
 
-            <Link to="/profile" className="flex items-center space-x-1 hover:text-orange-200 transition-colors">
-              <User className="h-5 w-5" />
-              <span className="hidden md:inline">Profile</span>
-            </Link>
+            {authState.isAuthenticated ? (
+              <div className="relative" ref={userMenuRef}>
+                <button
+                  onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
+                  className="flex items-center space-x-1 hover:text-orange-200 transition-colors"
+                >
+                  <img
+                    src={authState.user?.avatar || 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=150'}
+                    alt="Profile"
+                    className="w-8 h-8 rounded-full border-2 border-white"
+                  />
+                  <span className="hidden md:inline">{authState.user?.name || 'Profile'}</span>
+                </button>
+                
+                {isUserMenuOpen && (
+                  <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
+                    <Link
+                      to="/profile"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      onClick={() => setIsUserMenuOpen(false)}
+                    >
+                      Profile
+                    </Link>
+                    <button
+                      onClick={() => {
+                        logout();
+                        setIsUserMenuOpen(false);
+                      }}
+                      className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    >
+                      <LogOut className="inline h-4 w-4 mr-2" />
+                      Logout
+                    </button>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <Link 
+                to="/login" 
+                className="flex items-center space-x-1 hover:text-orange-200 transition-colors"
+              >
+                <User className="h-5 w-5" />
+                <span className="hidden md:inline">Sign In</span>
+              </Link>
+            )}
 
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -100,10 +167,30 @@ const Header: React.FC = () => {
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t border-orange-400">
             <div className="flex flex-col space-y-2">
-              <Link to="/" className="hover:text-orange-200 transition-colors">Home</Link>
-              <Link to="/categories" className="hover:text-orange-200 transition-colors">Categories</Link>
-              <Link to="/deals" className="hover:text-orange-200 transition-colors">Flash Deals</Link>
-              <Link to="/wishlist" className="hover:text-orange-200 transition-colors">Wishlist</Link>
+              <Link 
+                to="/" 
+                className="hover:text-orange-200 transition-colors"
+              >
+                Home
+              </Link>
+              <Link 
+                to="/categories" 
+                className="hover:text-orange-200 transition-colors"
+              >
+                Categories
+              </Link>
+              <button 
+                className="hover:text-orange-200 transition-colors text-left"
+                onClick={() => alert('Flash Deals feature coming soon!')}
+              >
+                Flash Deals
+              </button>
+              <button 
+                className="hover:text-orange-200 transition-colors text-left"
+                onClick={() => alert('Wishlist feature coming soon!')}
+              >
+                Wishlist
+              </button>
             </div>
           </div>
         )}

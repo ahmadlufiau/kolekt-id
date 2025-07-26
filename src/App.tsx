@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { CartProvider } from './context/CartContext';
 import { CategoryProvider } from './context/CategoryContext';
+import { AuthProvider } from './context/AuthContext';
 import Header from './components/Header';
 import Home from './pages/Home';
 import ProductDetail from './pages/ProductDetail';
@@ -12,6 +13,9 @@ import Checkout from './pages/Checkout';
 import OrderConfirmation from './pages/OrderConfirmation';
 import OrderTracking from './pages/OrderTracking';
 import HelpCenter from './pages/HelpCenter';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function AppContent() {
   const location = useLocation();
@@ -26,10 +30,28 @@ function AppContent() {
           <Route path="/product/:id" element={<ProductDetail />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/categories" element={<Categories />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/checkout" element={<Checkout />} />
-          <Route path="/order-confirmation" element={<OrderConfirmation />} />
-          <Route path="/order-tracking/:orderId" element={<OrderTracking />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/profile" element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          } />
+          <Route path="/checkout" element={
+            <ProtectedRoute>
+              <Checkout />
+            </ProtectedRoute>
+          } />
+          <Route path="/order-confirmation" element={
+            <ProtectedRoute>
+              <OrderConfirmation />
+            </ProtectedRoute>
+          } />
+          <Route path="/order-tracking/:orderId" element={
+            <ProtectedRoute>
+              <OrderTracking />
+            </ProtectedRoute>
+          } />
           <Route path="/help" element={<HelpCenter />} />
         </Routes>
       </main>
@@ -39,13 +61,15 @@ function AppContent() {
 
 function App() {
   return (
-    <CartProvider>
-      <CategoryProvider>
-        <Router>
-          <AppContent />
-        </Router>
-      </CategoryProvider>
-    </CartProvider>
+    <AuthProvider>
+      <CartProvider>
+        <CategoryProvider>
+          <Router>
+            <AppContent />
+          </Router>
+        </CategoryProvider>
+      </CartProvider>
+    </AuthProvider>
   );
 }
 

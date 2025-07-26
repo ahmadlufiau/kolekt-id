@@ -72,3 +72,75 @@ export interface Order {
   estimatedDelivery: string;
   trackingNumber?: string;
 }
+
+export interface AuthUser {
+  id: string;
+  name: string;
+  email: string;
+  avatar: string;
+  phone?: string;
+}
+
+export interface LoginCredentials {
+  email: string;
+  password: string;
+}
+
+export interface RegisterCredentials {
+  name: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+  phone?: string;
+}
+
+export interface AuthState {
+  user: AuthUser | null;
+  isAuthenticated: boolean;
+  isLoading: boolean;
+  error: string | null;
+}
+
+export interface Review {
+  id: string;
+  productId: string;
+  userId: string;
+  userName: string;
+  userAvatar: string;
+  rating: number;
+  title: string;
+  comment: string;
+  createdAt: string;
+  helpful: number;
+  images?: string[];
+}
+
+export interface ReviewFormData {
+  rating: number;
+  title: string;
+  comment: string;
+  images: string[];
+}
+
+export interface ChatMessage {
+  id: string;
+  senderId: string;
+  senderName: string;
+  senderAvatar: string;
+  senderType: 'customer' | 'seller';
+  message: string;
+  timestamp: string;
+  isRead: boolean;
+}
+
+export interface ChatRoom {
+  id: string;
+  productId: string;
+  customerId: string;
+  sellerId: string;
+  messages: ChatMessage[];
+  lastMessage?: ChatMessage;
+  unreadCount: number;
+  createdAt: string;
+  updatedAt: string;
+}
