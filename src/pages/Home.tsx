@@ -201,7 +201,7 @@ const Home: React.FC = () => {
               <div className="relative bg-[#0A2647] rounded-2xl p-8 text-white overflow-hidden">
                 <div className="relative z-10">
                   <h3 className="text-2xl font-bold mb-2">Free Shipping</h3>
-                  <p className="text-white/80 mb-4">On orders over $50</p>
+                  <p className="text-white/80 mb-4">On orders over Rp 500.000</p>
                   <button className="bg-[#FF6B6B] text-white px-6 py-2 rounded-lg font-semibold hover:bg-[#0A2647] transition-colors">
                     Shop Now
                   </button>
