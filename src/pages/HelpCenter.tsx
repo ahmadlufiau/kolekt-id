@@ -10,7 +10,7 @@ const HelpCenter: React.FC = () => {
   const categories = [
     {
       id: 'shopping',
-      title: 'Shopping at Shopee',
+              title: 'Shopping at Kolekt.id',
       icon: <ShoppingBag className="h-6 w-6" />,
       color: 'text-pink-500',
       bgColor: 'bg-pink-50',
@@ -52,14 +52,14 @@ const HelpCenter: React.FC = () => {
     },
     {
       id: 'food',
-      title: 'ShopeeFood',
+              title: 'KolektFood',
       icon: <Utensils className="h-6 w-6" />,
       color: 'text-red-500',
       bgColor: 'bg-red-50',
     },
     {
       id: 'pay',
-      title: 'ShopeePay',
+              title: 'KolektPay',
       icon: <DollarSign className="h-6 w-6" />,
       color: 'text-indigo-500',
       bgColor: 'bg-indigo-50',
@@ -69,17 +69,17 @@ const HelpCenter: React.FC = () => {
   const faqs = [
     {
       id: 1,
-      question: '[My Account] How to reset my Shopee account password if I forgot it?',
+              question: '[My Account] How to reset my Kolekt.id account password if I forgot it?',
       category: 'shopping',
     },
     {
       id: 2,
-      question: '[ShopeePay] How do I contact Consumer Protection Services?',
+              question: '[KolektPay] How do I contact Consumer Protection Services?',
       category: 'pay',
     },
     {
       id: 3,
-      question: '[My Account] Why can\'t I log into my Shopee account?',
+              question: '[My Account] Why can\'t I log into my Kolekt.id account?',
       category: 'shopping',
     },
     {
@@ -94,17 +94,17 @@ const HelpCenter: React.FC = () => {
     },
     {
       id: 6,
-      question: '[New to Shopee] Why can\'t I register my Shopee account with my phone number?',
+              question: '[New to Kolekt.id] Why can\'t I register my Kolekt.id account with my phone number?',
       category: 'shopping',
     },
     {
       id: 7,
-      question: '[Account Security] How to maintain the security of my Shopee account?',
+              question: '[Account Security] How to maintain the security of my Kolekt.id account?',
       category: 'shopping',
     },
     {
       id: 8,
-      question: '[ShopeeFood Purchase] How to cancel a ShopeeFood order?',
+              question: '[KolektFood Purchase] How to cancel a KolektFood order?',
       category: 'food',
     },
     {
@@ -136,19 +136,19 @@ const HelpCenter: React.FC = () => {
                 className="flex items-center space-x-2 text-gray-600 hover:text-orange-600 transition-colors"
               >
                 <ArrowLeft className="h-5 w-5" />
-                <span>Back to Shopee</span>
+                <span>Back to Kolekt.id</span>
               </Link>
               <div className="h-6 w-px bg-gray-300"></div>
               <div className="flex items-center space-x-2">
                 <div className="w-8 h-8 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg flex items-center justify-center">
                   <span className="text-white font-bold text-sm">S</span>
                 </div>
-                <span className="text-xl font-bold text-gray-900">Shopee</span>
+                <span className="text-xl font-bold text-gray-900">Kolekt.id</span>
                 <span className="text-gray-500">Help Center</span>
               </div>
             </div>
             <div className="flex items-center space-x-4 text-sm text-gray-600">
-              <span>Shopee Policies</span>
+                              <span>Kolekt.id Policies</span>
             </div>
           </div>
         </div>
@@ -195,8 +195,8 @@ const HelpCenter: React.FC = () => {
                 </div>
                 <div className="ml-3">
                   <p className="text-sm text-yellow-700">
-                    If your Shopee account has been hacked, please contact Customer Service immediately by selecting 
-                    <span className="font-semibold"> Live Chat with Shopee </span> - select 
+                            If your Kolekt.id account has been hacked, please contact Customer Service immediately by selecting
+        <span className="font-semibold"> Live Chat with Kolekt.id </span> - select 
                     <span className="font-semibold"> Chat with Live Agent</span>.{' '}
                     <button className="text-yellow-800 underline hover:text-yellow-900">
                       Learn more
@@ -303,7 +303,7 @@ const HelpCenter: React.FC = () => {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex space-x-6 mb-4 md:mb-0">
               <a href="#" className="text-gray-600 hover:text-orange-600 transition-colors">
-                Shopee Policies
+                Kolekt.id Policies
               </a>
               <a href="#" className="text-gray-600 hover:text-orange-600 transition-colors">
                 Terms of Service

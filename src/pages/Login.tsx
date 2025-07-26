@@ -54,7 +54,7 @@ const Login: React.FC = () => {
           </Link>
           <h2 className="text-3xl font-bold text-gray-900">Welcome back</h2>
           <p className="mt-2 text-sm text-gray-600">
-            Sign in to your Shopee account
+            Sign in to your Kolekt.id account
           </p>
         </div>
 

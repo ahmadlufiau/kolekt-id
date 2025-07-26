@@ -131,14 +131,14 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
   // Check for stored user on app load
   useEffect(() => {
-    const storedUser = localStorage.getItem('shopee_user');
+            const storedUser = localStorage.getItem('kolekt_user');
     if (storedUser) {
       try {
         const user = JSON.parse(storedUser);
         dispatch({ type: 'LOGIN_SUCCESS', user });
-      } catch {
-        localStorage.removeItem('shopee_user');
-      }
+              } catch {
+          localStorage.removeItem('kolekt_user');
+        }
     }
   }, []);
 
@@ -149,7 +149,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       const user = await mockAuthService.login(credentials);
       if (user) {
         dispatch({ type: 'LOGIN_SUCCESS', user });
-        localStorage.setItem('shopee_user', JSON.stringify(user));
+        localStorage.setItem('kolekt_user', JSON.stringify(user));
         return true;
       } else {
         dispatch({ type: 'LOGIN_FAILURE', error: 'Invalid email or password' });
@@ -178,7 +178,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       const user = await mockAuthService.register(credentials);
       if (user) {
         dispatch({ type: 'REGISTER_SUCCESS', user });
-        localStorage.setItem('shopee_user', JSON.stringify(user));
+        localStorage.setItem('kolekt_user', JSON.stringify(user));
         return true;
       } else {
         dispatch({ type: 'REGISTER_FAILURE', error: 'Email already exists' });
@@ -192,7 +192,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
   const logout = useCallback(() => {
     dispatch({ type: 'LOGOUT' });
-    localStorage.removeItem('shopee_user');
+    localStorage.removeItem('kolekt_user');
   }, []);
 
   const clearError = useCallback(() => {

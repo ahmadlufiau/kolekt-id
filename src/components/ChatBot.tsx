@@ -8,25 +8,12 @@ interface Message {
   timestamp: Date;
 }
 
-interface ChatBotProps {
-  helpCategories: Array<{
-    id: string;
-    title: string;
-    icon: React.ReactNode;
-  }>;
-  faqs: Array<{
-    id: number;
-    question: string;
-    category: string;
-  }>;
-}
-
-const ChatBot: React.FC<ChatBotProps> = ({ helpCategories, faqs }) => {
+const ChatBot: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      text: 'Hi! I\'m Shopee Assistant. How can I help you today? You can ask me about orders, payments, returns, or any other questions.',
+              text: 'Hi! I\'m Kolekt.id Assistant. How can I help you today? You can ask me about orders, payments, returns, or any other questions.',
       isBot: true,
       timestamp: new Date(),
     }
@@ -49,7 +36,7 @@ const ChatBot: React.FC<ChatBotProps> = ({ helpCategories, faqs }) => {
 
     // Check for greetings
     if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('hey')) {
-      return 'Hello! Welcome to Shopee Help Center. I can help you with questions about shopping, payments, orders, returns, and more. What would you like to know?';
+      return 'Hello! Welcome to Kolekt.id Help Center. I can help you with questions about shopping, payments, orders, returns, and more. What would you like to know?';
     }
 
     // Check for password/account issues
@@ -59,7 +46,7 @@ const ChatBot: React.FC<ChatBotProps> = ({ helpCategories, faqs }) => {
 
     // Check for payment issues
     if (lowerMessage.includes('payment') || lowerMessage.includes('pay') || lowerMessage.includes('paylater') || lowerMessage.includes('card')) {
-      return 'I can help with payment issues:\n\n• **PayLater**: Check your credit limit and payment history in ShopeePay\n• **Card Issues**: Ensure your card details are correct and has sufficient funds\n• **Payment Failed**: Try using a different payment method\n\nFor specific PayLater issues, you can contact our Consumer Protection Services. Need more help?';
+      return 'I can help with payment issues:\n\n• **PayLater**: Check your credit limit and payment history in KolektPay\n• **Card Issues**: Ensure your card details are correct and has sufficient funds\n• **Payment Failed**: Try using a different payment method\n\nFor specific PayLater issues, you can contact our Consumer Protection Services. Need more help?';
     }
 
     // Check for shipping/orders
@@ -72,28 +59,28 @@ const ChatBot: React.FC<ChatBotProps> = ({ helpCategories, faqs }) => {
       return 'For returns and refunds:\n\n• **Return Items**: Go to order details and select "Return/Refund"\n• **Cancellation**: You can cancel orders before they\'re shipped\n• **Refund Process**: Refunds typically take 3-7 business days\n\nMake sure to pack items properly for return shipping. Need help with a specific return?';
     }
 
-    // Check for ShopeeFood
-    if (lowerMessage.includes('food') || lowerMessage.includes('shopeefood') || lowerMessage.includes('restaurant')) {
-      return 'For ShopeeFood orders:\n\n• **Cancel Order**: You can cancel before restaurant confirms\n• **Delivery Issues**: Contact the delivery partner or restaurant\n• **Refunds**: Available for cancelled or problematic orders\n\nShopeeFood has different policies than regular Shopee orders. Need specific help with a food order?';
+    // Check for KolektFood
+    if (lowerMessage.includes('food') || lowerMessage.includes('kolektfood') || lowerMessage.includes('restaurant')) {
+      return 'For KolektFood orders:\n\n• **Cancel Order**: You can cancel before restaurant confirms\n• **Delivery Issues**: Contact the delivery partner or restaurant\n• **Refunds**: Available for cancelled or problematic orders\n\nKolektFood has different policies than regular Kolekt.id orders. Need specific help with a food order?';
     }
 
-    // Check for ShopeePay
-    if (lowerMessage.includes('shopeepay') || lowerMessage.includes('wallet') || lowerMessage.includes('balance')) {
-      return 'For ShopeePay questions:\n\n• **Add Money**: Use bank transfer, cards, or cash at partner locations\n• **Transaction Issues**: Check your transaction history\n• **Security**: Enable PIN and biometric protection\n\nShopeePay offers secure digital payments and rewards. What specific feature do you need help with?';
+    // Check for KolektPay
+    if (lowerMessage.includes('kolektpay') || lowerMessage.includes('wallet') || lowerMessage.includes('balance')) {
+      return 'For KolektPay questions:\n\n• **Add Money**: Use bank transfer, cards, or cash at partner locations\n• **Transaction Issues**: Check your transaction history\n• **Security**: Enable PIN and biometric protection\n\nKolektPay offers secure digital payments and rewards. What specific feature do you need help with?';
     }
 
     // Check for shopping general
     if (lowerMessage.includes('shop') || lowerMessage.includes('buy') || lowerMessage.includes('product') || lowerMessage.includes('seller')) {
-      return 'For shopping on Shopee:\n\n• **Product Questions**: Contact the seller directly\n• **Seller Issues**: Check seller ratings and reviews\n• **Shopping Tips**: Look for Shopee Mall for authentic products\n• **Promotions**: Check our daily deals and flash sales\n\nIs there a specific product or seller you need help with?';
+      return 'For shopping on Kolekt.id:\n\n• **Product Questions**: Contact the seller directly\n• **Seller Issues**: Check seller ratings and reviews\n• **Shopping Tips**: Look for Kolekt Mall for authentic products\n• **Promotions**: Check our daily deals and flash sales\n\nIs there a specific product or seller you need help with?';
     }
 
     // Check for contact/support
     if (lowerMessage.includes('contact') || lowerMessage.includes('support') || lowerMessage.includes('help') || lowerMessage.includes('agent')) {
-      return 'You can contact Shopee support through:\n\n• **Live Chat**: Available 24/7 for immediate help\n• **Phone Support**: Call our customer service hotline\n• **Email**: Send detailed questions to our support team\n\nFor urgent issues like account security, I recommend using Live Chat. Would you like me to connect you with a live agent?';
+      return 'You can contact Kolekt.id support through:\n\n• **Live Chat**: Available 24/7 for immediate help\n• **Phone Support**: Call our customer service hotline\n• **Email**: Send detailed questions to our support team\n\nFor urgent issues like account security, I recommend using Live Chat. Would you like me to connect you with a live agent?';
     }
 
     // Default response with suggestions
-    return `I'm not sure about that specific question, but I can help you with:\n\n• Account and login issues\n• Payment and PayLater problems\n• Order tracking and shipping\n• Returns and refunds\n• ShopeeFood orders\n• ShopeePay wallet\n• General shopping questions\n\nTry asking about any of these topics, or would you like to speak with a live agent?`;
+    return `I'm not sure about that specific question, but I can help you with:\n\n• Account and login issues\n• Payment and PayLater problems\n• Order tracking and shipping\n• Returns and refunds\n• KolektFood orders\n• KolektPay wallet\n• General shopping questions\n\nTry asking about any of these topics, or would you like to speak with a live agent?`;
   };
 
   const handleSendMessage = async () => {
@@ -165,7 +152,7 @@ const ChatBot: React.FC<ChatBotProps> = ({ helpCategories, faqs }) => {
                 <Bot className="h-5 w-5" />
               </div>
               <div>
-                <h3 className="font-semibold">Shopee Assistant</h3>
+                <h3 className="font-semibold">Kolekt.id Assistant</h3>
                 <p className="text-xs text-orange-100">Online • Typically replies instantly</p>
               </div>
             </div>

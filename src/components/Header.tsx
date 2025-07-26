@@ -65,7 +65,7 @@ const Header: React.FC = () => {
             to="/" 
             className="text-2xl font-bold text-white hover:text-orange-200 transition-colors"
           >
-            Shopee
+            Kolekt.id
           </Link>
 
           {/* Search bar */}
