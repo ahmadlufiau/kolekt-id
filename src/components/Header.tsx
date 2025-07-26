@@ -49,8 +49,10 @@ const Header: React.FC = () => {
           <div className="flex items-center space-x-4">
             <Bell className="h-4 w-4" />
             <span>Notifications</span>
-            <span>|</span>
-            <Link to="/help" className="hover:text-orange-200 transition-colors">Help</Link>
+                             <span>|</span>
+                 <Link to="/help" className="hover:text-orange-200 transition-colors">Help</Link>
+                 <span>|</span>
+                 <Link to="/seller/dashboard" className="hover:text-orange-200 transition-colors">Seller Hub</Link>
             <span>|</span>
             <span>English</span>
           </div>

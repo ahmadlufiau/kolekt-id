@@ -16,14 +16,18 @@ import HelpCenter from './pages/HelpCenter';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import ProtectedRoute from './components/ProtectedRoute';
+import SellerDashboard from './pages/SellerDashboard';
+import SellerOrders from './pages/SellerOrders';
+import SellerProducts from './pages/SellerProducts';
 
 function AppContent() {
   const location = useLocation();
   const isHelpPage = location.pathname === '/help';
+  const isSellerPage = location.pathname.startsWith('/seller');
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {!isHelpPage && <Header />}
+      {!isHelpPage && !isSellerPage && <Header />}
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -32,6 +36,9 @@ function AppContent() {
           <Route path="/categories" element={<Categories />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/seller/dashboard" element={<SellerDashboard />} />
+          <Route path="/seller/orders" element={<SellerOrders />} />
+          <Route path="/seller/products" element={<SellerProducts />} />
           <Route path="/profile" element={
             <ProtectedRoute>
               <Profile />
